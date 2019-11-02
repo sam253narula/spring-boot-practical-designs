@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,17 +42,16 @@ public class ParkingSlotController {
 		return vehicleList;
 	}
 	
-	@ResponseBody
-	@ApiOperation(value = "park", notes= "Stores the vehicle details in Repository", response = String.class)
+	@ApiOperation(value = "parks", notes= "Stores the vehicle details in Repository", response = String.class)
 	@PostMapping(value = "/vehicle/park", consumes= MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Vehicle Details stored in repo"),
 			@ApiResponse(code = 400, message = "Kindly provide a valid Input, id should be between 1 to 10 and the paking slot should be available")})
-	public ResponseEntity<?> park(@RequestBody Vehicle vehicle) { 
+	public ResponseEntity<String> park(@RequestBody Vehicle vehicle) { 
 		//parkingService.park(vehicle);
 		return new ResponseEntity<>(parkingService.park(vehicle), HttpStatus.CREATED);
 	}
-
+	
 	@DeleteMapping("/vehicle/unPark/{id}")
 	String newStudent(@PathVariable Long id) {
 		return parkingService.unParkVehicle(id);
