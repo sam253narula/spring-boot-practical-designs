@@ -42,7 +42,7 @@ public class ParkingSlotController {
 		return vehicleList;
 	}
 	
-	@ApiOperation(value = "parks", notes= "Stores the vehicle details in Repository", response = String.class)
+	@ApiOperation(value = "parks", notes= "Stores the vehicle details in Repository")
 	@PostMapping(value = "/vehicle/park", consumes= MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Vehicle Details stored in repo"),

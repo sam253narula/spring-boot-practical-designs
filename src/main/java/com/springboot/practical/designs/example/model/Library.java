@@ -30,14 +30,14 @@ public class Library {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "library_id")
+	@Column(name = "lib_id")
 	private long id;
 
 	@Column
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "library_id", referencedColumnName = "library_id")
+	@JoinColumn(name = "library_id", referencedColumnName = "lib_id")
 	private List<Book> books;
 	
 }
