@@ -29,7 +29,6 @@ import lombok.NoArgsConstructor;
 public class Library {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "lib_id")
 	private long id;
 

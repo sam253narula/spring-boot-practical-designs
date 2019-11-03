@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,10 +22,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
+//(name = "Book")
+@NamedQueries({
+	@NamedQuery(name = Book.FIND_BY_OID, query = "SELECT b FROM Book b WHERE b.id = :id")
+})
 public class Book {
-
+	
+	public static final String FIND_BY_OID = "Book.FIND_BY_OID";
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(nullable = false)
